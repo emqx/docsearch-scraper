@@ -1,0 +1,24 @@
+name: 'Update Algolia Index'
+description: 'Update Algolia Index'
+inputs:
+  docs_type:
+    description: 'Docs Type'
+    required: true
+
+  docs_version:
+    description: 'Docs Version'
+    required: true
+
+outputs:
+  result:
+    description: 'Result'
+    value: '{}'
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        python -m pip install -r requirements.txt
+        python -m src.index ${{ inputs.docs_type }} ${{ inputs.docs_version }}

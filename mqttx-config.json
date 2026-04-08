@@ -1,0 +1,20 @@
+{
+  "index_name": "mqttx",
+  "start_urls": ["https://mqttx.app/docs", "https://mqttx.app/zh/docs", "https://mqttx.app/ja/docs"],
+  "min_indexed_level": 1,
+  "selectors": {
+    "lvl0": ".page-docs #docs-type-tabs a.is-active",
+    "lvl1": ".page-docs .nuxt-content h1",
+    "lvl2": ".page-docs .nuxt-content h2",
+    "lvl3": ".page-docs .nuxt-content h3",
+    "lvl4": ".page-docs .nuxt-content h4",
+    "lvl5": ".page-docs .nuxt-content h5",
+    "lvl6": ".page-docs .nuxt-content h6",
+    "text": ".page-docs .nuxt-content p,.page-docs .nuxt-content li"
+  },
+  "custom_settings": {
+    "attributesForFaceting": ["language", "product", "version"]
+  },
+  "current_product": "mqttx",
+  "current_version": "latest"
+}

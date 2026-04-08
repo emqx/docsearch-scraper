@@ -1,0 +1,54 @@
+-i https://pypi.org/simple
+algoliasearch==2.6.0
+atomicwrites==1.4.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'
+attrs==24.2.0; python_version >= '3.7'
+automat==24.8.1; python_version >= '3.8'
+certifi==2024.8.30; python_version >= '3.6'
+cffi==1.17.1; platform_python_implementation != 'PyPy'
+charset-normalizer==3.4.0; python_full_version >= '3.7.0'
+click==8.0.2; python_version >= '3.6'
+constantly==23.10.4; python_version >= '3.8'
+cryptography==43.0.3; python_version >= '3.7'
+cssselect==1.2.0; python_version >= '3.7'
+defusedxml==0.7.1; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'
+hyperlink==21.0.0
+idna==3.10; python_version >= '3.6'
+incremental==24.7.2; python_version >= '3.8'
+itemadapter==0.9.0; python_version >= '3.8'
+itemloaders==1.3.2; python_version >= '3.8'
+jmespath==1.0.1; python_version >= '3.7'
+lxml==5.3.0; python_version >= '3.6'
+more-itertools==8.10.0; python_version >= '3.5'
+packaging==24.1; python_version >= '3.8'
+parsel==1.9.1; python_version >= '3.8'
+pluggy==1.0.0; python_version >= '3.6'
+protego==0.3.1; python_version >= '3.8'
+py==1.10.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'
+pyasn1==0.6.1; python_version >= '3.8'
+pyasn1-modules==0.4.1; python_version >= '3.8'
+pycparser==2.22; python_version >= '3.8'
+pydispatcher==2.0.7; platform_python_implementation == 'CPython'
+pyjwt==2.2.0; python_version >= '3.6'
+pyopenssl==24.2.1; python_version >= '3.7'
+pyperclip==1.5.27
+pytest==3.10.0
+python-dotenv==0.7.1
+python-helpscout-v2==1.0.1
+queuelib==1.7.0; python_version >= '3.8'
+ratelimit==1.4.1
+requests==2.32.3; python_version >= '3.8'
+requests-file==2.1.0
+requests-iap==0.2.0
+scrapy==2.11.2; python_version >= '3.8'
+selenium==3.141.0
+service-identity==24.2.0; python_version >= '3.8'
+setuptools==75.3.0; python_version >= '3.8'
+six==1.16.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'
+slacker==0.9.60
+tldextract==2.1.0
+tomli==2.0.2; python_version < '3.11'
+twisted==24.10.0; python_full_version >= '3.8.0'
+typing-extensions==4.12.2; python_version >= '3.8'
+urllib3==2.2.3; python_version >= '3.8'
+w3lib==2.2.1; python_version >= '3.8'
+zope.interface==7.1.1; python_version >= '3.8'

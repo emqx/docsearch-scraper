@@ -1,0 +1,18 @@
+{
+  "index_name": "en",
+  "sitemap_urls": [],
+  "selectors": {
+    "lvl0": {
+      "selector": "section.has-active div h2",
+      "global": true
+    },
+    "lvl1": ".vp-doc h1",
+    "lvl2": ".vp-doc h2",
+    "lvl3": ".vp-doc h3",
+    "lvl4": ".vp-doc h4",
+    "text": ".vp-doc p, .vp-doc li, .vp-doc table td, .vp-doc table th"
+  },
+  "custom_settings": {
+    "attributesForFaceting": ["lang", "language", "product", "version"]
+  }
+}
