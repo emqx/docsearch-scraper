@@ -3,8 +3,6 @@ DocSearch scraper main entry point
 """
 import os
 import json
-import requests
-from requests_iap import IAPAuth
 
 from scrapy.crawler import CrawlerProcess
 
@@ -14,7 +12,6 @@ from .documentation_spider import DocumentationSpider
 from .strategies.default_strategy import DefaultStrategy
 from .custom_downloader_middleware import CustomDownloaderMiddleware
 from .custom_dupefilter import CustomDupeFilter
-from .config.browser_handler import BrowserHandler
 from .strategies.algolia_settings import AlgoliaSettings
 
 try:
@@ -31,7 +28,6 @@ EXIT_CODE_NO_RECORD = 3
 
 def run_config(config):
     config = ConfigLoader(config)
-    CustomDownloaderMiddleware.driver = config.driver
     DocumentationSpider.NB_INDEXED = 0
 
     strategy = DefaultStrategy(config)
@@ -63,15 +59,6 @@ def run_config(config):
                 "CF-Access-Client-Secret": os.getenv("CF_ACCESS_CLIENT_SECRET"),
             }
         )
-    elif os.getenv("IAP_AUTH_CLIENT_ID") and os.getenv("IAP_AUTH_SERVICE_ACCOUNT_JSON"):
-        iap_token = IAPAuth(
-            client_id=os.getenv("IAP_AUTH_CLIENT_ID"),
-            service_account_secret_dict=json.loads(
-                os.getenv("IAP_AUTH_SERVICE_ACCOUNT_JSON")
-            ),
-        )(requests.Request()).headers["Authorization"]
-        headers.update({"Authorization": iap_token})
-
     DEFAULT_REQUEST_HEADERS = headers
 
     process = CrawlerProcess({
@@ -96,9 +83,6 @@ def run_config(config):
 
     process.start()
     process.stop()
-
-    # Kill browser if needed
-    BrowserHandler.destroy(config.driver)
 
     if len(config.extra_records) > 0:
         algolia_helper.add_records(config.extra_records, "Extra records", False)

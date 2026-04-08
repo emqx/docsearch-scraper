@@ -28,8 +28,6 @@ class DocumentationSpider(CrawlSpider, SitemapSpider):
     http_pass = os.environ.get('DOCSEARCH_BASICAUTH_PASSWORD', None)
     algolia_helper = None
     strategy = None
-    js_render = False
-    js_wait = 0
     match_capture_any_scheme = re.compile(r"^(https?)(.*)")
     backreference_any_scheme = r"^https?\2(.*)$"
     # Could be any url prefix such as http://www or http://
@@ -73,8 +71,6 @@ class DocumentationSpider(CrawlSpider, SitemapSpider):
                           stop_url in config.stop_urls]
         self.algolia_helper = algolia_helper
         self.strategy = strategy
-        self.js_render = config.js_render
-        self.js_wait = config.js_wait
         self.scrape_start_urls = config.scrape_start_urls
         self.remove_get_params = config.remove_get_params
         self.strict_redirect = config.strict_redirect
@@ -90,7 +86,7 @@ class DocumentationSpider(CrawlSpider, SitemapSpider):
             deny=self.stop_urls,
             tags=('a', 'area', 'iframe'),
             attrs=('href', 'src'),
-            canonicalize=(not config.js_render or not config.use_anchors)
+            canonicalize=True
         )
 
         DocumentationSpider.rules = [

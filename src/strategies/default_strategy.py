@@ -346,8 +346,7 @@ class DefaultStrategy(AbstractStrategy):
         return False
 
     def _get_url_with_anchor(self, current_page_url, anchor):
-        if (
-                not self.config.js_render or not self.config.use_anchors) and anchor is not None:
+        if anchor is not None:
             return current_page_url + '#' + anchor
 
         return current_page_url

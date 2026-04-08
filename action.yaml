@@ -20,5 +20,6 @@ runs:
     - shell: bash
       run: |
         cd ${{ github.action_path }}
-        python -m pip install -r requirements.txt
-        python -m src.index ${{ inputs.docs_type }} ${{ inputs.docs_version }}
+        pip install uv
+        uv sync --frozen
+        uv run python -m src.index ${{ inputs.docs_type }} ${{ inputs.docs_version }}

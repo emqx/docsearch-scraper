@@ -69,11 +69,7 @@ class TestStartUrls:
         assert actual.start_urls[0]['url'] == 'http://www.foo.bar/'
 
     def test_start_urls_should_be_generated_when_there_is_automatic_tagging_browser(
-            self, monkeypatch):
-        from .mocked_init import MockedInit
-        monkeypatch.setattr("selenium.webdriver.chrome",
-                            lambda x: MockedInit())
-        monkeypatch.setattr("time.sleep", lambda x: "")
+            self):
 
         # When
         c = config({

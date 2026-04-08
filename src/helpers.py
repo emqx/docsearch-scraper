@@ -1,4 +1,3 @@
-from builtins import input
 from cssselect import HTMLTranslator
 import json
 

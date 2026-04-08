@@ -34,7 +34,6 @@ def get_strategy(config=None):
         'stop_urls': ['test'],
         'strategy': 'test',
         'js_render': False,
-        'js_wait': 0,
         'use_anchors': False
     }
 

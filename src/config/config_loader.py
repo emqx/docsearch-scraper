@@ -6,7 +6,6 @@ Load the config json file.
 """
 
 from collections import OrderedDict
-from distutils.util import strtobool
 import json
 import os
 import copy
@@ -15,7 +14,16 @@ from .config_validator import ConfigValidator
 from .nb_hits_updater import NbHitsUpdater
 from .urls_parser import UrlsParser
 from .selectors_parser import SelectorsParser
-from .browser_handler import BrowserHandler
+
+
+def _strtobool(val):
+    val = val.lower()
+    if val in ('y', 'yes', 't', 'true', 'on', '1'):
+        return True
+    elif val in ('n', 'no', 'f', 'false', 'off', '0'):
+        return False
+    else:
+        raise ValueError(f'invalid truth value {val!r}')
 
 
 class ConfigLoader:
@@ -75,20 +83,11 @@ class ConfigLoader:
         for key, value in list(data.items()):
             setattr(self, key, value)
 
-        # Start browser if needed
-        self.driver = BrowserHandler.init(self.config_original_content,
-                                          self.js_render,
-                                          self.user_agent)
-
         # Validate
         ConfigValidator(self).validate()
 
         # Modify
         self._parse()
-
-        # Stop browser if needed
-        if not self.js_render:
-            self.driver = BrowserHandler.destroy(self.driver)
 
         # BC new correct naming
         self.scrape_start_urls = self.scrap_start_urls if not self.scrap_start_urls else self.scrape_start_urls
@@ -115,7 +114,7 @@ class ConfigLoader:
         self.api_key = os.environ.get('API_KEY', None)
         self.update_nb_hits = os.environ.get('UPDATE_NB_HITS', None)
         if self.update_nb_hits is not None:
-            self.update_nb_hits = bool(strtobool(self.update_nb_hits))
+            self.update_nb_hits = bool(_strtobool(self.update_nb_hits))
         if self.index_name_tmp is None:
             self.index_name_tmp = os.environ.get('INDEX_NAME_TMP', self.index_name + '_tmp')
 
