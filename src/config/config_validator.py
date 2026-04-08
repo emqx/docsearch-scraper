@@ -25,14 +25,6 @@ class ConfigValidator:
                                                     list):
             raise Exception('stop_urls should be list')
 
-        if self.config.js_render and not isinstance(self.config.js_render,
-                                                    bool):
-            raise Exception('js_render should be boolean')
-
-        # `js_wait` is set to 0s by default unless it is specified
-        if self.config.js_wait and not isinstance(self.config.js_wait, int):
-            raise Exception('js_wait should be integer')
-
         if self.config.use_anchors and not isinstance(self.config.use_anchors,
                                                       bool):
             raise Exception('use_anchors should be boolean')

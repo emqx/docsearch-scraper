@@ -17,7 +17,6 @@ def config(additional_config={}):
         'strategy': 'strategy',
         'strip_chars': 'strip_chars',
         'js_render': False,
-        'js_wait': 0,
         'use_anchors': False
     }
     final_config = base_config.copy()

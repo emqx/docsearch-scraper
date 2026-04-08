@@ -2,7 +2,6 @@ import re
 import copy
 
 from urllib.parse import urlparse
-from ..js_executor import JsExecutor
 
 
 class UrlsParser:
@@ -47,17 +46,10 @@ class UrlsParser:
                             if isinstance(start_url['variables'][match], list):
                                 values[match] = start_url['variables'][match]
                             else:
-                                if 'url' in start_url['variables'][
-                                    match] and 'js' in start_url['variables'][
-                                    match]:
-                                    executor = JsExecutor()
-                                    values[match] = executor.execute(
-                                        start_url['variables'][match]['url'],
-                                        start_url['variables'][match]['js'])
-                                else:
-                                    raise Exception(
-                                        "Bad arguments for variables." + match + " for url " +
-                                        start_url['url'])
+                                raise ValueError(
+                                    'Variable \'' + match + '\' for url \'' +
+                                    start_url['url'] + '\' must be a list'
+                                )
                         else:
                             raise Exception(
                                 "Missing " + match + " in variables" + " for url " +

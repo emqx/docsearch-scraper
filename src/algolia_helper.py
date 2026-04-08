@@ -3,8 +3,6 @@ Wrapper on top of the AlgoliaSearch API client"""
 
 from algoliasearch.search_client import SearchClient
 
-from builtins import range
-
 
 class AlgoliaHelper:
     """AlgoliaHelper"""
